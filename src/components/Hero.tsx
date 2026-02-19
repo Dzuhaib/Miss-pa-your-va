@@ -70,7 +70,7 @@ export default function Hero() {
                 </motion.div>
             </AnimatePresence>
 
-            <div className="max-w-7xl mx-auto px-6 relative z-20 w-full pt-[120px] pb-[50px]">
+            <div className="max-w-7xl mx-auto px-6 relative z-20 w-full pt-[220px] pb-[120px]">
                 <div className="max-w-3xl">
                     <AnimatePresence mode="wait">
                         <motion.div
