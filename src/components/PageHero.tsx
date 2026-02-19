@@ -46,7 +46,7 @@ export default function PageHero({ title, accentTitle, subtitle, parents = [], c
                     transition={{ duration: 0.8 }}
                     className="max-w-full"
                 >
-                    <h1 className="text-3xl md:text-5xl lg:text-7xl font-serif font-bold text-white leading-[1.1] mb-8 whitespace-nowrap overflow-hidden text-ellipsis">
+                    <h1 className="text-3xl md:text-5xl lg:text-7xl font-serif font-bold text-white leading-[1.1] mb-8 md:whitespace-nowrap overflow-hidden text-ellipsis">
                         {title}
                         {accentTitle && (
                             <> <span className="text-primary italic">{accentTitle}.</span></>
