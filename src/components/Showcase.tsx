@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import ImageSlider from "./ImageSlider";
 
 const showcaseItems = [
