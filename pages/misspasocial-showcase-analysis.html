@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Showcase Page Analysis — misspasocial.co.uk</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D4A8;
+    --dark: #0F0F0F;
+    --dark-2: #1A1A1A;
+    --dark-3: #242424;
+    --mid: #333333;
+    --text: #E8E4DC;
+    --text-muted: #9A9285;
+    --green: #4CAF7A;
+    --red: #E05858;
+    --amber: #E89B3A;
+    --blue: #5B9BD5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--dark-2);
+    border-bottom: 1px solid #2A2A2A;
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .site-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .site-badge .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .site-badge span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .site-badge strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .header-meta {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: right;
+  }
+
+  .header-meta a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 5rem 3rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-label {
+    display: inline-block;
+    background: rgba(201, 169, 110, 0.12);
+    border: 1px solid rgba(201, 169, 110, 0.3);
+    color: var(--gold);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.8;
+  }
+
+  /* SCORE CARDS */
+  .scores-section {
+    padding: 0 3rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+  }
+
+  .section-sub {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 4rem;
+  }
+
+  .score-card {
+    background: var(--dark-2);
+    border: 1px solid #2A2A2A;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .score-card:hover { border-color: rgba(201,169,110,0.4); }
+
+  .score-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .score-card.green::before { background: var(--green); }
+  .score-card.amber::before { background: var(--amber); }
+  .score-card.red::before { background: var(--red); }
+
+  .score-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .score-card.green .score-num { color: var(--green); }
+  .score-card.amber .score-num { color: var(--amber); }
+  .score-card.red .score-num { color: var(--red); }
+
+  .score-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+  }
+
+  /* TABS */
+  .tabs-section {
+    padding: 0 3rem 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #2A2A2A;
+    margin-bottom: 2.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tab-nav::-webkit-scrollbar { display: none; }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 0.9rem 1.6rem;
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+  }
+
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* CONTENT BLOCKS */
+  .content-block {
+    background: var(--dark-2);
+    border: 1px solid #2A2A2A;
+    border-radius: 10px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .content-block h3 .icon {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+
+  .content-block p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .content-block p:last-child { margin-bottom: 0; }
+
+  /* ASSET TABLE */
+  .asset-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .asset-table thead tr {
+    border-bottom: 1px solid #333;
+  }
+
+  .asset-table th {
+    text-align: left;
+    padding: 0.7rem 1rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .asset-table td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid #222;
+    color: var(--text);
+    vertical-align: top;
+  }
+
+  .asset-table tr:last-child td { border-bottom: none; }
+
+  .asset-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .tag-image { background: rgba(91,155,213,0.15); color: var(--blue); }
+  .tag-text { background: rgba(201,169,110,0.12); color: var(--gold); }
+  .tag-link { background: rgba(76,175,122,0.12); color: var(--green); }
+  .tag-video { background: rgba(224,88,88,0.12); color: var(--red); }
+  .tag-nav { background: rgba(232,155,58,0.12); color: var(--amber); }
+
+  .url-mono {
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    word-break: break-all;
+  }
+
+  /* DESIGN REFERENCE */
+  .design-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 700px) {
+    .design-grid { grid-template-columns: 1fr; }
+    header { padding: 1.5rem; }
+    .hero, .scores-section, .tabs-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .tab-btn { padding: 0.7rem 1rem; font-size: 0.78rem; }
+  }
+
+  .design-card {
+    background: var(--dark-3);
+    border: 1px solid #2A2A2A;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .design-card h4 {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .color-swatch {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.08);
+    flex-shrink: 0;
+  }
+
+  .swatch-info strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .swatch-info span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: monospace;
+  }
+
+  .font-sample {
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #2A2A2A;
+  }
+
+  .font-sample:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .font-sample .name { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.2rem; }
+  .font-sample .preview { font-size: 1.1rem; color: var(--text); }
+
+  /* IMPROVEMENT ITEMS */
+  .improvement-item {
+    background: var(--dark-2);
+    border: 1px solid #2A2A2A;
+    border-radius: 10px;
+    padding: 1.8rem 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+
+  .improvement-item:hover { border-color: rgba(201,169,110,0.25); }
+
+  .priority-badge {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .priority-high { background: rgba(224,88,88,0.12); color: var(--red); border: 1px solid rgba(224,88,88,0.25); }
+  .priority-med { background: rgba(232,155,58,0.12); color: var(--amber); border: 1px solid rgba(232,155,58,0.25); }
+  .priority-low { background: rgba(76,175,122,0.12); color: var(--green); border: 1px solid rgba(76,175,122,0.25); }
+
+  .improvement-body { flex: 1; }
+
+  .improvement-body h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .improvement-body p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  .improvement-body .action {
+    margin-top: 0.7rem;
+    font-size: 0.82rem;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* CASE STUDIES */
+  .case-card {
+    background: var(--dark-3);
+    border: 1px solid #2A2A2A;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .case-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .case-card .client-tag {
+    display: inline-block;
+    background: rgba(201,169,110,0.1);
+    border: 1px solid rgba(201,169,110,0.2);
+    color: var(--gold);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    margin-bottom: 0.8rem;
+  }
+
+  .case-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* LAYOUT DIAGRAM */
+  .layout-diagram {
+    background: var(--dark-3);
+    border: 1px solid #2A2A2A;
+    border-radius: 8px;
+    padding: 2rem;
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 2;
+  }
+
+  .layout-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    align-items: center;
+  }
+
+  .layout-block {
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  .lb-gold { border-color: rgba(201,169,110,0.4); color: var(--gold); background: rgba(201,169,110,0.05); }
+  .lb-blue { border-color: rgba(91,155,213,0.4); color: var(--blue); background: rgba(91,155,213,0.05); }
+  .lb-green { border-color: rgba(76,175,122,0.4); color: var(--green); background: rgba(76,175,122,0.05); }
+  .lb-grey { border-color: #333; color: var(--text-muted); }
+  .lb-full { flex: 1; }
+  .lb-half { flex: 0.5; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #222;
+    margin: 2rem 0;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* SUMMARY FOOTER */
+  .summary-footer {
+    background: var(--dark-2);
+    border-top: 1px solid #2A2A2A;
+    padding: 3rem;
+    text-align: center;
+    margin-top: 4rem;
+  }
+
+  .summary-footer h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+
+  .summary-footer p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="site-badge">
+    <div class="dot"></div>
+    <div>
+      <span>Page Analysis Report</span>
+      <strong>misspasocial.co.uk/showcase/</strong>
+    </div>
+  </div>
+  <div class="header-meta">
+    Generated: February 2026<br>
+    <a href="https://misspasocial.co.uk/showcase/" target="_blank">↗ View Live Page</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-label">Full Page Audit</div>
+    <h1>Showcase Page<br><em>Analysis & Improvement Guide</em></h1>
+    <p class="hero-sub">A complete breakdown of content, assets, current design reference, and actionable recommendations for Miss PA Your VA's social media portfolio page.</p>
+  </section>
+
+  <!-- SCORES -->
+  <section class="scores-section">
+    <h2 class="section-title">At a Glance</h2>
+    <p class="section-sub">Quick health check across key page dimensions</p>
+    <div class="score-grid">
+      <div class="score-card amber">
+        <div class="score-num">6/10</div>
+        <div class="score-label">Overall Design Quality</div>
+      </div>
+      <div class="score-card amber">
+        <div class="score-num">5/10</div>
+        <div class="score-label">Visual Hierarchy</div>
+      </div>
+      <div class="score-card green">
+        <div class="score-num">8/10</div>
+        <div class="score-label">Content Quality</div>
+      </div>
+      <div class="score-card red">
+        <div class="score-num">4/10</div>
+        <div class="score-label">Conversion Optimisation</div>
+      </div>
+      <div class="score-card amber">
+        <div class="score-num">6/10</div>
+        <div class="score-label">Mobile Experience</div>
+      </div>
+      <div class="score-card red">
+        <div class="score-num">3/10</div>
+        <div class="score-label">Social Proof Integration</div>
+      </div>
+      <div class="score-card green">
+        <div class="score-num">7/10</div>
+        <div class="score-label">SEO Signals</div>
+      </div>
+      <div class="score-card red">
+        <div class="score-num">4/10</div>
+        <div class="score-label">Case Study Depth</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABS -->
+  <section class="tabs-section">
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('content')">📄 Page Content</button>
+      <button class="tab-btn" onclick="switchTab('assets')">🖼️ Assets</button>
+      <button class="tab-btn" onclick="switchTab('design')">🎨 Design Reference</button>
+      <button class="tab-btn" onclick="switchTab('improvements')">🚀 Improvements</button>
+    </div>
+
+    <!-- TAB: PAGE CONTENT -->
+    <div class="tab-content active" id="tab-content">
+
+      <div class="content-block">
+        <h3><span class="icon">📋</span> Page Overview</h3>
+        <p><strong>URL:</strong> https://misspasocial.co.uk/showcase/</p>
+        <p><strong>Page Title:</strong> Social Media Transformations in Devon | Miss PA Case Studies</p>
+        <p><strong>Purpose:</strong> Portfolio page displaying before-and-after social media grid transformations for client work across beauty, aesthetics, wellness, and medical industries.</p>
+        <p><strong>Breadcrumb:</strong> Home › Showcase</p>
+        <p><strong>Total Word Count:</strong> ~700 words of body copy</p>
+        <p><strong>Number of Case Studies:</strong> 5</p>
+      </div>
+
+      <div class="content-block">
+        <h3><span class="icon">🏗️</span> Page Layout Structure</h3>
+        <div class="layout-diagram">
+          <div class="layout-row"><div class="layout-block lb-full lb-gold">SITE HEADER — Logo + Nav + Contact Bar</div></div>
+          <div class="layout-row"><div class="layout-block lb-full lb-blue">PAGE HERO — H1 "Showcase" + Breadcrumb</div></div>
+          <div class="layout-row"><div class="layout-block lb-full lb-blue">SUBTITLE — "Look how we can transform your socials..."</div></div>
+          <div class="layout-row"><div class="layout-block lb-half lb-green">BEFORE Image</div><div class="layout-block lb-half lb-green">AFTER Image</div></div>
+          <div class="layout-row"><div class="layout-block lb-full lb-grey">Case Study 1 Text — AJM Aesthetics</div></div>
+          <div class="layout-row"><div class="layout-block lb-full lb-grey">Case Study 2 Text — Wellbeing Brand Cornwall</div></div>
+          <div class="layout-row"><div class="layout-block lb-half lb-green">BEFORE Image</div><div class="layout-block lb-half lb-green">AFTER Image</div></div>
+          <div class="layout-row"><div class="layout-block lb-half lb-green">BEFORE Image</div><div class="layout-block lb-half lb-green">AFTER Image</div></div>
+          <div class="layout-row"><div class="layout-block lb-full lb-grey">Case Study 3 Text — Structured, Branded, Balanced</div></div>
+          <div class="layout-row"><div class="layout-block lb-full lb-grey">Case Study 4 Text — Consistency & Readability</div></div>
+          <div class="layout-row"><div class="layout-block lb-half lb-green">BEFORE Image</div><div class="layout-block lb-half lb-green">AFTER Image</div></div>
+          <div class="layout-row"><div class="layout-block lb-half lb-green">BEFORE Image</div><div class="layout-block lb-half lb-green">AFTER Image</div></div>
+          <div class="layout-row"><div class="layout-block lb-full lb-grey">Case Study 5 Text — London / Essex Medical Clinic</div></div>
+          <div class="layout-row"><div class="layout-block lb-half lb-green">BEFORE Image</div><div class="layout-block lb-half lb-green">AFTER Image</div></div>
+          <div class="layout-row"><div class="layout-block lb-full lb-gold">SITE FOOTER — Logo + Links + Copyright</div></div>
+        </div>
+        <p style="margin-top:1rem; font-size:0.82rem;">⚠️ Note: The page alternates between text sections and image pairs with no consistent rhythm or visual container. Text and images are not always clearly paired — layout feels disjointed on scroll.</p>
+      </div>
+
+      <div class="content-block">
+        <h3><span class="icon">📝</span> Case Studies — Full Content Breakdown</h3>
+
+        <div class="case-card">
+          <div class="client-tag">Case Study 1</div>
+          <h4>AJM Aesthetics: From Overcrowded to Clean and Impactful</h4>
+          <p>Existing black and gold color scheme had potential but was diluted by inconsistent execution. Issues: excessive body copy on graphics, poor grid structure. Solution: New header banner, on-brand graphics with clear CTAs, high-quality photography, mix of Reels and static posts, darker dramatic aesthetic for better contrast, better before-and-after layout, inspirational quotes and Reels integration. The business covers clinic, academy, and wholesale arm.</p>
+        </div>
+
+        <div class="case-card">
+          <div class="client-tag">Case Study 2</div>
+          <h4>Wellbeing Brand Transformation in Cornwall</h4>
+          <p>Goal: refresh online presence for a Cornwall wellbeing business focused on retreats and classes. Solution: softer visual style, mindful messaging, content resonating with audience seeking balance, relaxation, and personal growth. Transformed socials from generic to a welcoming digital extension of their retreat experience. Internal SEO link to /services/social-media-manager/ used here.</p>
+        </div>
+
+        <div class="case-card">
+          <div class="client-tag">Case Study 3</div>
+          <h4>Structured, Branded, and Balanced</h4>
+          <p>Client unnamed. Issue: mismatched images, no coherent design style, no structured posting order. Solution: defined color palette, column-based grid structure — Column 1: text posts (Pay in 3, inspirational quotes, tips); Columns 2–3: photography and before-and-afters. Recurring themes: reviews, makeovers, "being yourself" messaging.</p>
+        </div>
+
+        <div class="case-card">
+          <div class="client-tag">Case Study 4</div>
+          <h4>Creating Consistency and Readability</h4>
+          <p>Client unnamed. Issues: inconsistent grid aesthetic, overly dark posts ("5 Reasons to Try", "Isolation is Everything"), excessive small text on "Referral Discount" post, visual "Reach Your Back with Trimmers" didn't fit layout. Solution: existing lighter color palette used as image overlay, bold black text headlines, clear CTAs, directional arrows to guide users, neon mint green headlines on photography, brighter and more legible grid.</p>
+        </div>
+
+        <div class="case-card">
+          <div class="client-tag">Case Study 5</div>
+          <h4>Creative Social Media Management Across the UK — London Medical Clinic</h4>
+          <p>Leading Bilba clinic in London. Team of skilled medics and doctors. Challenge: needed professional yet approachable online presence. Solution: educational content + behind-the-scenes + engaging visuals. Additional service: content filming day capturing 1,200+ pieces of useable video footage and photos. Internal Wikipedia link to London included (unusual). Also references work in Essex.</p>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <h3><span class="icon">🔗</span> Navigation & CTAs on Page</h3>
+        <p>No explicit CTA buttons appear within the showcase content body itself. No "Book a discovery call", "Work with us", or "Get in touch" buttons are embedded between case studies.</p>
+        <p>The only conversion opportunity on the page is through the global header and footer navigation. This is a significant missed opportunity given the intent of the page.</p>
+      </div>
+
+    </div>
+
+    <!-- TAB: ASSETS -->
+    <div class="tab-content" id="tab-assets">
+
+      <div class="content-block">
+        <h3><span class="icon">🖼️</span> Image Assets (Before & After Photos)</h3>
+        <table class="asset-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Filename</th>
+              <th>Full URL</th>
+              <th>Alt Text</th>
+              <th>Type</th>
+              <th>Case Study</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td class="url-mono">Before0.jpg</td>
+              <td class="url-mono">/wp-content/uploads/2025/02/Before0.jpg</td>
+              <td>Before</td>
+              <td><span class="tag tag-image">Image</span></td>
+              <td>AJM Aesthetics</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="url-mono">After0.jpg</td>
+              <td class="url-mono">/wp-content/uploads/2025/02/After0.jpg</td>
+              <td>After</td>
+              <td><span class="tag tag-image">Image</span></td>
+              <td>AJM Aesthetics</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="url-mono">Miss-PA-your-VA-stories.png-1-e1759411453288.png</td>
+              <td class="url-mono">/wp-content/uploads/2025/09/Miss-PA-your-VA-stories.png-1-e1759411453288.png</td>
+              <td>Before</td>
+              <td><span class="tag tag-image">Image</span></td>
+              <td>Cornwall Wellbeing</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="url-mono">Miss-PA-your-VA-stories-4-1-e1759411330620.png</td>
+              <td class="url-mono">/wp-content/uploads/2025/09/Miss-PA-your-VA-stories-4-1-e1759411330620.png</td>
+              <td>After</td>
+              <td><span class="tag tag-image">Image</span></td>
+              <td>Cornwall Wellbeing</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="url-mono">before1.jpg</td>
+              <td class="url-mono">/wp-content/uploads/2025/02/before1.jpg</td>
+              <td>Before</td>
+              <td><span class="tag tag-image">Image</span></td>
+              <td>Structured/Balanced</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="url-mono">after1.jpg</td>
+              <td class="url-mono">/wp-content/uploads/2025/02/after1.jpg</td>
+              <td>After</td>
+              <td><span class="tag tag-image">Image</span></td>
+              <td>Structured/Balanced</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="url-mono">Before2.jpg</td>
+              <td class="url-mono">/wp-content/uploads/2025/02/Before2.jpg</td>
+              <td>Before</td>
+              <td><span class="tag tag-image">Image</span></td>
+              <td>Consistency/Readability</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="url-mono">After2.jpg</td>
+              <td class="url-mono">/wp-content/uploads/2025/02/After2.jpg</td>
+              <td>After</td>
+              <td><span class="tag tag-image">Image</span></td>
+              <td>Consistency/Readability</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td class="url-mono">Before3.jpg</td>
+              <td class="url-mono">/wp-content/uploads/2025/02/Before3.jpg</td>
+              <td>Before</td>
+              <td><span class="tag tag-image">Image</span></td>
+              <td>Performance/Visual Strategy</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td class="url-mono">After3.jpg</td>
+              <td class="url-mono">/wp-content/uploads/2025/02/After3.jpg</td>
+              <td>After</td>
+              <td><span class="tag tag-image">Image</span></td>
+              <td>Performance/Visual Strategy</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td class="url-mono">Miss-PA-your-VA-stories-5-1-e1759411643133.png</td>
+              <td class="url-mono">/wp-content/uploads/2025/09/Miss-PA-your-VA-stories-5-1-e1759411643133.png</td>
+              <td>Before</td>
+              <td><span class="tag tag-image">Image</span></td>
+              <td>London Medical Clinic</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td class="url-mono">Miss-PA-your-VA-stories-6-1-e1759411111236.png</td>
+              <td class="url-mono">/wp-content/uploads/2025/09/Miss-PA-your-VA-stories-6-1-e1759411111236.png</td>
+              <td>Miss PA your VA stories 6 (1)</td>
+              <td><span class="tag tag-image">Image</span></td>
+              <td>London Medical Clinic</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content-block">
+        <h3><span class="icon">🧭</span> Navigation & Logo Assets</h3>
+        <table class="asset-table">
+          <thead>
+            <tr><th>Filename</th><th>URL</th><th>Usage</th><th>Type</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="url-mono">MPYV-BLACK-TEXT-1K.png</td>
+              <td class="url-mono">/wp-content/uploads/2025/02/MPYV-BLACK-TEXT-1K.png</td>
+              <td>Header Logo</td>
+              <td><span class="tag tag-image">Image</span></td>
+            </tr>
+            <tr>
+              <td class="url-mono">MPYV-WHITETEXT-4K.png</td>
+              <td class="url-mono">/wp-content/uploads/2025/02/MPYV-WHITETEXT-4K.png</td>
+              <td>Footer Logo</td>
+              <td><span class="tag tag-image">Image</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content-block">
+        <h3><span class="icon">🔗</span> Internal Links on Page</h3>
+        <table class="asset-table">
+          <thead>
+            <tr><th>Link Text</th><th>Destination</th><th>Type</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Skip to content</td><td>#content</td><td><span class="tag tag-link">Anchor</span></td></tr>
+            <tr><td>Miss PA Your VA (logo)</td><td>/</td><td><span class="tag tag-nav">Nav</span></td></tr>
+            <tr><td>Home</td><td>/</td><td><span class="tag tag-nav">Nav</span></td></tr>
+            <tr><td>About</td><td>/about/</td><td><span class="tag tag-nav">Nav</span></td></tr>
+            <tr><td>FAQS</td><td>/faqs/</td><td><span class="tag tag-nav">Nav</span></td></tr>
+            <tr><td>Event</td><td>/event/</td><td><span class="tag tag-nav">Nav</span></td></tr>
+            <tr><td>Services</td><td>/services/</td><td><span class="tag tag-nav">Nav</span></td></tr>
+            <tr><td>Social Media Manager</td><td>/services/social-media-manager/</td><td><span class="tag tag-nav">Nav + Body</span></td></tr>
+            <tr><td>Content Filming</td><td>/services/content-filming/</td><td><span class="tag tag-nav">Nav</span></td></tr>
+            <tr><td>Social Media Coaching</td><td>/social-media-coaching/</td><td><span class="tag tag-nav">Nav</span></td></tr>
+            <tr><td>Virtual Assistant Services</td><td>/services/virtual-assistant-services/</td><td><span class="tag tag-nav">Nav</span></td></tr>
+            <tr><td>Websites & eCommerce</td><td>/services/websites-ecommerce/</td><td><span class="tag tag-nav">Nav</span></td></tr>
+            <tr><td>Showcase</td><td>/showcase/</td><td><span class="tag tag-nav">Nav (current)</span></td></tr>
+            <tr><td>Testimonials</td><td>/testimonials/</td><td><span class="tag tag-nav">Nav + Footer</span></td></tr>
+            <tr><td>Blog</td><td>/blog/</td><td><span class="tag tag-nav">Nav + Footer</span></td></tr>
+            <tr><td>Contact</td><td>/contact/</td><td><span class="tag tag-nav">Nav + Footer</span></td></tr>
+            <tr><td>social media manager in Devon (inline)</td><td>/services/social-media-manager/</td><td><span class="tag tag-link">Body Link</span></td></tr>
+            <tr><td>London (inline)</td><td>https://en.wikipedia.org/wiki/London</td><td><span class="tag tag-link">External</span></td></tr>
+            <tr><td>Membership</td><td>/membership/</td><td><span class="tag tag-nav">Footer</span></td></tr>
+            <tr><td>Social Media Manager</td><td>/services/social-media-manager/</td><td><span class="tag tag-nav">Footer</span></td></tr>
+            <tr><td>Social Media Coaching</td><td>/services/social-media-coaching/</td><td><span class="tag tag-nav">Footer</span></td></tr>
+            <tr><td>Virtual Assistant Services</td><td>/services/virtual-assistant-services/</td><td><span class="tag tag-nav">Footer</span></td></tr>
+            <tr><td>Websites & eCommerce</td><td>/services/websites-ecommerce/</td><td><span class="tag tag-nav">Footer</span></td></tr>
+            <tr><td>Business Policies</td><td>/business-policies/</td><td><span class="tag tag-nav">Footer</span></td></tr>
+            <tr><td>Contract Terms & Conditions</td><td>/contract-terms/</td><td><span class="tag tag-nav">Footer</span></td></tr>
+            <tr><td>Crafted by Impress Web</td><td>https://impressweb.co.uk</td><td><span class="tag tag-link">External</span></td></tr>
+            <tr><td>Hosted by Hosting Stack</td><td>https://hostingstack.co.uk</td><td><span class="tag tag-link">External</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content-block">
+        <h3><span class="icon">⚠️</span> Asset Issues Identified</h3>
+        <p><strong>Alt text is weak:</strong> 10 out of 12 case study images use generic alt text — just "Before" or "After". This provides zero SEO value and is inaccessible. Descriptive alt text like "AJM Aesthetics Instagram grid before redesign" would improve both SEO and screen reader accessibility.</p>
+        <p><strong>Inconsistent filename conventions:</strong> Feb 2025 images use simple names (Before0.jpg, after1.jpg); Sep 2025 images use long GUID-based filenames (Miss-PA-your-VA-stories-5-1-e1759411643133.png). Should be standardised for organisation and SEO.</p>
+        <p><strong>Wikipedia external link:</strong> An inline link to Wikipedia for "London" provides no SEO or UX value. This should be removed — it sends visitors away from the page for zero benefit.</p>
+        <p><strong>No videos on this page:</strong> All other service pages use .mp4 background videos. The Showcase page is entirely static images, missing an opportunity to show real video content work.</p>
+        <p><strong>No CTAs or buttons:</strong> Zero conversion-focused assets (buttons, forms, or embedded booking links) exist within the page body content.</p>
+      </div>
+
+    </div>
+
+    <!-- TAB: DESIGN REFERENCE -->
+    <div class="tab-content" id="tab-design">
+
+      <div class="design-grid">
+        <div class="design-card">
+          <h4>🎨 Colour Palette (Inferred from site)</h4>
+          <div class="color-swatch">
+            <div class="swatch" style="background:#000000;"></div>
+            <div class="swatch-info"><strong>Jet Black</strong><span>#000000 — Primary background, dominant sections</span></div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch" style="background:#C8A96E;"></div>
+            <div class="swatch-info"><strong>Warm Gold</strong><span>#C8A96E — Accent, headings, premium feel</span></div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch" style="background:#FFFFFF;"></div>
+            <div class="swatch-info"><strong>White</strong><span>#FFFFFF — Body text, clean contrast</span></div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch" style="background:#1A1A1A; border: 1px solid #333;"></div>
+            <div class="swatch-info"><strong>Charcoal</strong><span>#1A1A1A — Secondary backgrounds, cards</span></div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch" style="background:#F5F5F5; border: 1px solid #ddd;"></div>
+            <div class="swatch-info"><strong>Off White</strong><span>#F5F5F5 — Light section backgrounds</span></div>
+          </div>
+        </div>
+
+        <div class="design-card">
+          <h4>🔤 Typography</h4>
+          <div class="font-sample">
+            <div class="name">Headings — Playfair Display or similar serif (inferred)</div>
+            <div class="preview" style="font-family: 'Playfair Display', serif; font-size: 1.4rem;">AJM Aesthetics Transformation</div>
+          </div>
+          <div class="font-sample">
+            <div class="name">Body — Clean sans-serif (DM Sans / similar)</div>
+            <div class="preview" style="font-size: 0.9rem; color: #aaa;">While their existing black and gold color scheme had potential, its impact was diluted by inconsistent execution.</div>
+          </div>
+          <div class="font-sample">
+            <div class="name">Page Title — Bold / H1</div>
+            <div class="preview" style="font-size: 1.6rem; font-weight: 700;">Showcase</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <h3><span class="icon">📐</span> Current Layout Characteristics</h3>
+        <div class="two-col">
+          <div>
+            <p><strong>Layout type:</strong> Single-column linear scroll. No sidebar, no grid filtering, no tabs — just one long vertical page.</p>
+            <p style="margin-top:0.8rem;"><strong>Image display:</strong> Before and after images are shown as a side-by-side pair (two images at 50% width each). Simple and effective but lacks interactivity — no slider comparison, no hover reveal, no lightbox.</p>
+            <p style="margin-top:0.8rem;"><strong>Section separation:</strong> Headings (H2) separate each case study, but there are no visual containers (cards, bordered sections, or background blocks) to clearly delineate where one case study ends and the next begins.</p>
+          </div>
+          <div>
+            <p><strong>Spacing:</strong> Default WordPress theme spacing. Adequate but not luxury-calibre. Inconsistent gaps between image pairs and text blocks.</p>
+            <p style="margin-top:0.8rem;"><strong>Text & image order:</strong> Inconsistent — some case studies show the image first then text, others show text first then image, breaking visual rhythm and making the page feel unplanned.</p>
+            <p style="margin-top:0.8rem;"><strong>Mobile:</strong> Side-by-side images likely stack vertically on mobile (standard WordPress behaviour). No custom mobile optimisation evident.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <h3><span class="icon">📊</span> SEO & Meta</h3>
+        <table class="asset-table">
+          <tr><td style="width:180px; font-weight:500; color:var(--text);">Page Title</td><td class="url-mono">Social Media Transformations in Devon | Miss PA Case Studies</td></tr>
+          <tr><td style="font-weight:500; color:var(--text);">H1</td><td>Showcase</td></tr>
+          <tr><td style="font-weight:500; color:var(--text);">H2 Subheading</td><td>Look how we can transform your socials...</td></tr>
+          <tr><td style="font-weight:500; color:var(--text);">Target Keywords</td><td>Social media manager in Devon, social media transformations, before and after social media</td></tr>
+          <tr><td style="font-weight:500; color:var(--text);">Internal linking</td><td>1 body link to /services/social-media-manager/ — good but limited</td></tr>
+          <tr><td style="font-weight:500; color:var(--text);">External links</td><td>Wikipedia link to London — no SEO benefit, sends traffic away</td></tr>
+          <tr><td style="font-weight:500; color:var(--text);">Image alt text</td><td>Mostly "Before" / "After" — very weak for SEO</td></tr>
+          <tr><td style="font-weight:500; color:var(--text);">Schema</td><td>No structured data / portfolio schema visible</td></tr>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- TAB: IMPROVEMENTS -->
+    <div class="tab-content" id="tab-improvements">
+
+      <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.9rem;">Improvements are sorted by impact. 🔴 High Priority · 🟡 Medium Priority · 🟢 Quick Win</p>
+
+      <div class="improvement-item">
+        <div class="priority-badge priority-high">🔴<br>High<br>Priority</div>
+        <div class="improvement-body">
+          <h4>Add In-Page CTAs Between Every Case Study</h4>
+          <p>The page currently has zero buttons or conversion points in the content body. A visitor who reads 3 case studies and feels inspired has nowhere to go except scroll all the way to find nav links. Every portfolio page should close each case study with a micro-CTA — a button or a line that nudges them toward booking.</p>
+          <div class="action">→ Add a "Want results like this? Book a free discovery call →" button after each case study. Link to /contact/. Use your gold accent colour.</div>
+        </div>
+      </div>
+
+      <div class="improvement-item">
+        <div class="priority-badge priority-high">🔴<br>High<br>Priority</div>
+        <div class="improvement-body">
+          <h4>Add Interactive Before/After Sliders</h4>
+          <p>Showing two static images side by side is the most basic way to display before/after transformations. A drag slider (where the user moves a handle to reveal the before/after) is dramatically more engaging, demonstrates the transformation more powerfully, and keeps visitors on the page longer — all signals that improve both conversions and SEO. WordPress plugins like "Twenty20 Image Before-After" or simple CSS/JS solutions can achieve this with no performance hit.</p>
+          <div class="action">→ Replace all static before/after image pairs with interactive reveal sliders. Add "Drag to compare" tooltip text.</div>
+        </div>
+      </div>
+
+      <div class="improvement-item">
+        <div class="priority-badge priority-high">🔴<br>High<br>Priority</div>
+        <div class="improvement-body">
+          <h4>Give Every Case Study a Proper Results Section</h4>
+          <p>Currently, the case study copy explains what was done visually, but there are no measurable outcomes — no follower growth stats, no engagement rate improvements, no reach increases, no conversion data. Even approximate numbers or percentage improvements would dramatically increase trust and perceived value. Prospects reading this page are deciding whether to spend money — they need proof of results, not just pretty images.</p>
+          <div class="action">→ Add a "Results" or "The Impact" section under each case study with 2–3 stats or outcomes. Example: "↑ 340% increase in profile visits" or "Reached 12,000 accounts within first month." Even qualitative outcomes ("Client reported a full book within 6 weeks") work powerfully.</div>
+        </div>
+      </div>
+
+      <div class="improvement-item">
+        <div class="priority-badge priority-high">🔴<br>High<br>Priority</div>
+        <div class="improvement-body">
+          <h4>Name All Clients or Use Branded Case Study Cards</h4>
+          <p>3 out of 5 case studies have no client name. While client confidentiality is understandable, anonymous case studies feel much less credible than named ones. Even a pseudonym with industry and location ("Beauty Salon, Exeter") would be better. AJM Aesthetics is named and feels the most credible entry on the page. The London medical clinic is referenced but named oddly ("Bilba clinic" — likely a placeholder left in by mistake).</p>
+          <div class="action">→ Either name clients (with permission) or use consistent "Client A — Aesthetics Clinic, Cornwall" style labelling. Create a visual card format for each case study with industry tags, location, and services provided.</div>
+        </div>
+      </div>
+
+      <div class="improvement-item">
+        <div class="priority-badge priority-med">🟡<br>Medium<br>Priority</div>
+        <div class="improvement-body">
+          <h4>Fix All Image Alt Text for SEO & Accessibility</h4>
+          <p>All 12 case study images currently use "Before" or "After" as alt text. This is a significant SEO and accessibility miss. Screen readers say "image: Before" which is meaningless. Search engines see no contextual information. Each image should describe what it actually shows.</p>
+          <div class="action">→ Update alt text to format: "[Client Name] Instagram grid [before/after] social media redesign by Miss PA Your VA". Example: "AJM Aesthetics Instagram grid before social media redesign — Miss PA Your VA Devon".</div>
+        </div>
+      </div>
+
+      <div class="improvement-item">
+        <div class="priority-badge priority-med">🟡<br>Medium<br>Priority</div>
+        <div class="improvement-body">
+          <h4>Add Client Testimonial Quotes to Each Case Study</h4>
+          <p>The Testimonials page likely has quotes from these clients, but the Showcase page — the page specifically designed to show proof of work — has none. Adding a short pull quote from the client under each case study creates a powerful one-two punch: "here's what we did" + "here's what they said about it."</p>
+          <div class="action">→ Add a styled blockquote under each case study with a client testimonial. Even one or two sentences from the client dramatically increases credibility. Use a gold accent or speech bubble design to make them stand out visually.</div>
+        </div>
+      </div>
+
+      <div class="improvement-item">
+        <div class="priority-badge priority-med">🟡<br>Medium<br>Priority</div>
+        <div class="improvement-body">
+          <h4>Create Consistent Visual Case Study Cards</h4>
+          <p>Currently, case studies are just heading + text + images dumped in sequence. There is no visual container, no card border, no background differentiation between case studies. As you scroll, it is genuinely difficult to know where one ends and the next begins, especially since some have image-first and some have text-first layouts.</p>
+          <div class="action">→ Wrap each case study in a styled card or section with a subtle border, background colour change, or top-rule. Include a consistent header row with: client name/alias, industry tag (e.g. "Aesthetics", "Wellness"), location tag, and services provided tags. This creates scannable, professional portfolio presentation.</div>
+        </div>
+      </div>
+
+      <div class="improvement-item">
+        <div class="priority-badge priority-med">🟡<br>Medium<br>Priority</div>
+        <div class="improvement-body">
+          <h4>Add a Filtering/Categorisation System</h4>
+          <p>As the portfolio grows, a flat scroll page becomes unwieldy. Prospects in aesthetics want to see aesthetic work; wellness businesses want to see wellness work. A simple filter bar at the top (All | Aesthetics | Wellness | Medical | Beauty | Salons) lets visitors immediately find relevant examples, and shows the breadth of the portfolio at a glance.</p>
+          <div class="action">→ Add JavaScript filter buttons at the top of the case studies section. Tag each case study with a category. This can be done with simple CSS show/hide toggling — no plugin needed.</div>
+        </div>
+      </div>
+
+      <div class="improvement-item">
+        <div class="priority-badge priority-med">🟡<br>Medium<br>Priority</div>
+        <div class="improvement-body">
+          <h4>Remove the Wikipedia Link to "London"</h4>
+          <p>There is an inline hyperlink on the word "London" that goes to Wikipedia. This serves no purpose — visitors know what London is. More importantly, it sends people away from your page to a third-party site for no gain whatsoever, and could be seen as an SEO anti-pattern.</p>
+          <div class="action">→ Remove the Wikipedia link immediately. If you want to emphasise geographic reach, say "London-based clinic" in plain text or link to your own location-specific pages.</div>
+        </div>
+      </div>
+
+      <div class="improvement-item">
+        <div class="priority-badge priority-low">🟢<br>Quick<br>Win</div>
+        <div class="improvement-body">
+          <h4>Add a Hero Banner or Intro Section</h4>
+          <p>The page jumps from a plain H1 "Showcase" straight into the first case study. There is no page introduction — no statement of what the visitor is about to see, no social proof hook, no reason to keep reading. A short 2–3 sentence hero section sets the stage and builds anticipation.</p>
+          <div class="action">→ Add a hero intro: something like "Real transformations. Real results. See how we've helped beauty, aesthetics, and wellness businesses across Devon and the UK build stunning social media presences from the ground up." Optionally include a stat: "5 industries · 22+ clients · Multi award-winning results."</div>
+        </div>
+      </div>
+
+      <div class="improvement-item">
+        <div class="priority-badge priority-low">🟢<br>Quick<br>Win</div>
+        <div class="improvement-body">
+          <h4>Add a Video Showcase Section</h4>
+          <p>Every other service page on the site uses a background video. The Showcase page — which is specifically meant to demonstrate the quality of work — has none. Adding even one embedded video example (a Reel or TikTok created for a client, or the content filming day footage from the London clinic which produced 1,200+ pieces) would significantly elevate the page.</p>
+          <div class="action">→ Add a "Video Work" section after the image case studies. Embed client Reels (with permission) or a showreel. Even a looping .mp4 like used elsewhere on the site would add dynamism.</div>
+        </div>
+      </div>
+
+      <div class="improvement-item">
+        <div class="priority-badge priority-low">🟢<br>Quick<br>Win</div>
+        <div class="improvement-body">
+          <h4>Fix the "Bilba Clinic" Text Error</h4>
+          <p>In Case Study 5, the text reads "a leading Bilba**clinic in London" — this appears to be a formatting error or a placeholder/anonymisation attempt that was left in the copy. The double asterisks (**) and unusual word suggest a content draft mistake. This looks unprofessional to any careful reader.</p>
+          <div class="action">→ Correct to "a leading clinic in London" or supply the actual client name if approved. Remove the stray asterisks and capitalise "Clinic" consistently.</div>
+        </div>
+      </div>
+
+      <div class="improvement-item">
+        <div class="priority-badge priority-low">🟢<br>Quick<br>Win</div>
+        <div class="improvement-body">
+          <h4>Add a Closing CTA Section</h4>
+          <p>The page ends abruptly with the final case study image — then straight into the footer. There is no closing call to action. After viewing 5 transformations, the visitor has maximum intent — but is given nothing to do with it.</p>
+          <div class="action">→ Add a full-width CTA block at the bottom of the case studies, before the footer: "Ready to transform your socials? Let's talk." with a prominent "Book a Free Discovery Call" button. This is standard practice for any portfolio or case study page and can significantly increase contact form submissions.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<div class="summary-footer">
+  <h2>Summary</h2>
+  <p>The Showcase page has excellent raw material — real client work, strong written case studies, and a clear niche.<br>
+  The biggest opportunities are: interactive before/after sliders, measurable results data, embedded CTAs, and consistent visual containers.<br>
+  These changes would transform it from a passive portfolio into an active lead-generation asset.</p>
+</div>
+
+<script>
+  function switchTab(id) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
