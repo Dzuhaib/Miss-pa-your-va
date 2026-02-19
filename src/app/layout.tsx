@@ -7,6 +7,10 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Miss PA Social | Premium Social Media & VA Services",
   description: "Helping business owners reclaim their time and energy with premium social media management and virtual assistant services.",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
