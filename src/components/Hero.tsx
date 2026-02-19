@@ -5,6 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import dynamic from "next/dynamic";
+
+const PixelBlast = dynamic(() => import("./PixelBlast"), { ssr: false });
 
 const slides = [
     {
@@ -12,28 +15,48 @@ const slides = [
         body: "Helping beauty, aesthetics, and wellness businesses grow online with expert social media and marketing support.",
         cta1: { label: "Find out more", href: "/about" },
         cta2: { label: "Let's Talk?", href: "/contact" },
-        video: "https://misspasocial.co.uk/wp-content/uploads/2025/01/social-media.mp4"
+        pixelConfig: {
+            variant: "square" as const,
+            color: "#DE0C1A",
+            pixelSize: 4,
+            patternDensity: 1.2
+        }
     },
     {
         headline: <>Filming for Beauty & <span className="text-primary italic">Aesthetic Clinics</span></>,
         body: "Bring your brand to life with high-quality content filming. We create cinematic visuals and social-ready videos that make your clinic stand out.",
         cta1: { label: "Learn More", href: "/services/content-filming" },
         cta2: { label: "Let's Talk?", href: "/contact" },
-        video: "https://misspasocial.co.uk/wp-content/uploads/2025/01/aesthetics.mp4"
+        pixelConfig: {
+            variant: "circle" as const,
+            color: "#FFFFFF",
+            pixelSize: 3,
+            patternDensity: 0.8
+        }
     },
     {
         headline: <>Social Media Manager in <span className="text-primary italic">Devon & UK</span></>,
         body: "I turn ideas into action with purpose-driven strategies, creative storytelling, and clear messaging that connect brands with their ideal audience.",
         cta1: { label: "Learn More", href: "/services/social-media-manager" },
         cta2: { label: "Let's Talk?", href: "/contact" },
-        video: "https://misspasocial.co.uk/wp-content/uploads/2025/01/social-media.mp4"
+        pixelConfig: {
+            variant: "diamond" as const,
+            color: "#DE0C1A",
+            pixelSize: 5,
+            patternDensity: 1.5
+        }
     },
     {
         headline: <>Virtual Assistant in <span className="text-primary italic">Devon & UK</span></>,
         body: "Your reliable helping hand for beauty and wellness businesses. I handle the details so you can focus on growing your brand.",
         cta1: { label: "Learn More", href: "/services/virtual-assistant-services" },
         cta2: { label: "Let's Talk?", href: "/contact" },
-        video: "https://misspasocial.co.uk/wp-content/uploads/2025/01/file.mp4"
+        pixelConfig: {
+            variant: "triangle" as const,
+            color: "#FFFFFF",
+            pixelSize: 4,
+            patternDensity: 0.6
+        }
     }
 ];
 
@@ -48,29 +71,33 @@ export default function Hero() {
     }, []);
 
     return (
-        <section className="relative h-screen flex items-center overflow-hidden">
+        <section className="relative min-h-screen overflow-hidden bg-black flex flex-col">
             <AnimatePresence mode="wait">
                 <motion.div
                     key={current}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 1.5 }}
                     className="absolute inset-0"
                 >
-                    <div className="absolute inset-0 bg-black/50 z-10" />
-                    <video
-                        src={slides[current].video}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="w-full h-full object-cover"
+                    <div className="absolute inset-0 bg-black/40 z-10" />
+                    <PixelBlast
+                        variant={slides[current].pixelConfig.variant}
+                        color={slides[current].pixelConfig.color}
+                        pixelSize={slides[current].pixelConfig.pixelSize}
+                        patternDensity={slides[current].pixelConfig.patternDensity}
+                        enableRipples={true}
+                        rippleSpeed={0.4}
+                        speed={0.3}
+                        edgeFade={0.4}
+                        transparent={true}
+                        className="opacity-50"
                     />
                 </motion.div>
             </AnimatePresence>
 
-            <div className="max-w-7xl mx-auto px-6 relative z-20 w-full pt-[220px] pb-[120px]">
+            <div className="max-w-7xl mx-auto px-6 relative z-20 w-full pt-[175px] pb-[125px]">
                 <div className="max-w-3xl">
                     <AnimatePresence mode="wait">
                         <motion.div

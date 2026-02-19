@@ -108,6 +108,7 @@ export default function Showcase() {
                                             afterImage={item.after}
                                             beforeAlt={`${item.title} Before`}
                                             afterAlt={`${item.title} After`}
+                                            priority={index === 0}
                                         />
                                     </div>
                                 </div>

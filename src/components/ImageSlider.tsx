@@ -9,13 +9,15 @@ interface ImageSliderProps {
     afterImage: string;
     beforeAlt?: string;
     afterAlt?: string;
+    priority?: boolean;
 }
 
 export default function ImageSlider({
     beforeImage,
     afterImage,
     beforeAlt = "Before",
-    afterAlt = "After"
+    afterAlt = "After",
+    priority = false
 }: ImageSliderProps) {
     const [sliderPosition, setSliderPosition] = useState(50);
     const [isDragging, setIsDragging] = useState(false);
@@ -56,7 +58,7 @@ export default function ImageSlider({
                     alt={afterAlt}
                     fill
                     className="object-cover"
-                    priority
+                    priority={priority}
                 />
                 <div className="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg">
                     After
@@ -73,7 +75,7 @@ export default function ImageSlider({
                     alt={beforeAlt}
                     fill
                     className="object-cover"
-                    priority
+                    priority={priority}
                 />
                 <div className="absolute top-4 left-4 bg-black/50 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border border-white/20">
                     Before
