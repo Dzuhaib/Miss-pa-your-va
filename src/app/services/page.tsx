@@ -47,7 +47,7 @@ export default function ServicesPage() {
             </section>
 
             <ScrollVelocity
-                texts={['Strategy', 'Creative', 'Growth']}
+                texts={['Expertise & Strategy', 'Creative & Growth']}
                 velocity={40}
                 className="text-primary"
             />

@@ -42,7 +42,7 @@ export default function ImageSlider({
     return (
         <div
             ref={containerRef}
-            className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden cursor-ew-resize select-none border border-white/10 shadow-2xl"
+            className="relative w-full aspect-[3/4] rounded-[2rem] overflow-hidden cursor-ew-resize select-none border border-white/10 shadow-2xl"
             onMouseMove={onMouseMove}
             onMouseDown={onMouseDown}
             onMouseUp={onMouseUp}

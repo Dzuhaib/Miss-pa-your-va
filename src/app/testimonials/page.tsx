@@ -120,7 +120,7 @@ export default function TestimonialsPage() {
                         </a>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                         {googleReviews.map((review, i) => (
                             <motion.div
                                 key={i}
@@ -128,7 +128,7 @@ export default function TestimonialsPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: (i % 4) * 0.05 }}
-                                className="p-10 rounded-[3rem] bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all"
+                                className="p-10 rounded-[3rem] bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all flex flex-col h-full"
                             >
                                 <div className="flex items-center justify-between mb-6">
                                     <div className="flex items-center gap-4">
@@ -141,7 +141,7 @@ export default function TestimonialsPage() {
                                     <GoogleIcon className="w-6 h-6 opacity-40" />
                                 </div>
                                 <StarRow />
-                                <p className="text-muted-foreground leading-relaxed mt-4">{review.text}</p>
+                                <p className="text-muted-foreground leading-relaxed mt-4 line-clamp-6 flex-grow">{review.text}</p>
                             </motion.div>
                         ))}
                     </div>

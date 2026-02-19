@@ -27,7 +27,7 @@ export default function Footer() {
                             </div>
                         </Link>
                         <p className="text-white/50 leading-relaxed text-sm">
-                            Your dedicated partner for luxury social media management and business support. We empower beauty and aesthetics brands to scale with confidence.
+                            Miss PA Your VA offers expert Social Media Management and Coaching, plus Virtual Assistant services. We help busy business owners reclaim their time and grow their businesses by handling everything from social media to admin. Let us take the load off so you can focus on what you do best.
                         </p>
                         <div className="flex gap-4">
                             {[
@@ -135,8 +135,8 @@ export default function Footer() {
                     </div>
 
                     <div className="flex items-center gap-8 text-white/30 text-[10px] font-bold uppercase tracking-widest">
-                        <Link href="/business-policies" className="hover:text-primary transition-colors">Privacy Policy</Link>
-                        <Link href="/contract-terms" className="hover:text-primary transition-colors">Terms of Service</Link>
+                        <Link href="/business-policies" className="hover:text-primary transition-colors">Business Policies</Link>
+                        <Link href="/contract-terms" className="hover:text-primary transition-colors">Contract Terms</Link>
                     </div>
 
                     <div className="flex items-center gap-2 text-white/30 text-[10px] uppercase tracking-widest">
