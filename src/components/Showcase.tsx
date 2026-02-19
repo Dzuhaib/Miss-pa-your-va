@@ -46,7 +46,7 @@ export default function Showcase() {
                             viewport={{ once: true }}
                             className="text-5xl md:text-7xl font-serif font-bold leading-tight"
                         >
-                            Results that <br /> <span className="text-primary italic">Speak for Themselves.</span>
+                            Results that <span className="text-primary italic">Speak for Themselves.</span>
                         </motion.h2>
                     </div>
                     <Link href="/showcase" className="text-sm font-bold uppercase tracking-widest border-b-2 border-primary pb-2 hover:text-primary transition-colors">
