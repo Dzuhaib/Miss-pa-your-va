@@ -2,8 +2,11 @@
 
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { Calendar, Tag, User, ArrowLeft, Share2, MessageSquare } from "lucide-react";
+import { Calendar, Tag, User, ArrowLeft, Share2, MessageSquare, Bookmark } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import PageHero from "@/components/PageHero";
+import CTASection from "@/components/CTASection";
 
 const blogContent: Record<string, { title: string, category: string, date: string, content: string[] }> = {
     "social-media-myths-engagement": {
@@ -77,53 +80,60 @@ export default function BlogPostPage() {
         content: ["Content for this article is being updated. Please check back soon or contact us for marketing insights."]
     };
 
-    return (
-        <main className="pt-32 pb-24 px-6">
-            <article className="max-w-4xl mx-auto">
-                <Link href="/blog" className="flex items-center gap-2 text-primary font-bold mb-12 hover:-translate-x-1 transition-transform">
-                    <ArrowLeft size={18} /> Back to Insights
-                </Link>
+    // Split title for accent effect (last word)
+    const titleWords = post.title.split(' ');
+    const accentTitle = titleWords.length > 1 ? titleWords.pop() : '';
+    const mainTitle = titleWords.join(' ');
 
-                <header className="mb-16">
-                    <div className="flex items-center gap-4 mb-6">
-                        <span className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest">{post.category}</span>
-                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                            <Calendar size={14} />
-                            <span>{post.date}</span>
+    return (
+        <main className="min-h-screen bg-[#FDFCFB]">
+            <PageHero
+                title={mainTitle}
+                accentTitle={accentTitle}
+                subtitle={`${post.date} • ${post.category}`}
+                parents={[{ name: "Blog", href: "/blog" }]}
+                currentPage={post.title.length > 30 ? post.title.substring(0, 30) + '...' : post.title}
+            />
+
+            <article className="max-w-4xl mx-auto px-6 py-24">
+                <header className="mb-20">
+                    <div className="flex items-center gap-6 border-b border-gray-100 pb-12">
+                        <div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center ring-4 ring-white shadow-xl overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700">
+                            <Image src="/assets/images/founder.jpg" alt="Claire Northcott" fill className="object-cover" />
                         </div>
-                    </div>
-                    <h1 className="text-4xl md:text-6xl font-serif font-bold leading-tight mb-8">
-                        {post.title}
-                    </h1>
-                    <div className="flex items-center gap-4 border-y border-gray-100 py-6">
-                        <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center">
-                            <User className="text-primary" size={24} />
-                        </div>
-                        <div>
-                            <p className="font-bold text-sm">Claire Northcott</p>
-                            <p className="text-xs text-muted-foreground">Founder & Social Media Coach</p>
+                        <div className="space-y-1">
+                            <p className="font-serif font-bold text-2xl tracking-tight">Claire Northcott</p>
+                            <p className="text-[10px] text-primary uppercase tracking-[0.3em] font-bold">Founder & Social Media Coach</p>
                         </div>
                         <div className="ml-auto flex gap-3">
-                            <button className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center text-muted-foreground hover:text-primary transition-all"><Share2 size={18} /></button>
+                            <button className="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm">
+                                <Share2 size={18} />
+                            </button>
+                            <button className="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm">
+                                <Bookmark size={18} />
+                            </button>
                         </div>
                     </div>
                 </header>
 
-                <div className="prose prose-lg max-w-none mb-24">
+                <div className="prose prose-xl max-w-none mb-32">
                     {post.content.map((p, i) => (
-                        <p key={i} className="text-lg text-muted-foreground leading-relaxed mb-8">{p}</p>
+                        <p key={i} className="text-xl text-muted-foreground/80 leading-relaxed mb-10 font-light italic">{p}</p>
                     ))}
                 </div>
 
-                <section className="p-12 rounded-[3rem] bg-muted/50 border border-gray-100 text-center">
-                    <MessageSquare className="text-primary mx-auto mb-6" size={40} />
-                    <h2 className="text-3xl font-serif font-bold mb-4">Want more insights?</h2>
-                    <p className="text-muted-foreground mb-8">Book a discovery call to see how these strategies can work for your specifically.</p>
-                    <Link href="/contact" className="btn-premium">
+                <section className="p-16 rounded-[4rem] bg-[#0F0F0F] text-white text-center relative overflow-hidden shadow-2xl">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -mr-32 -mt-32" />
+                    <MessageSquare className="text-primary mx-auto mb-8" size={48} />
+                    <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">Ready to <span className="text-primary italic">Transform?</span></h2>
+                    <p className="text-white/60 mb-12 text-xl max-w-2xl mx-auto font-light italic">Book a discovery call to see how these strategies can be tailored specifically for your brand.</p>
+                    <Link href="/contact" className="btn-premium px-12 py-6 text-lg">
                         Talk to a Coach
                     </Link>
                 </section>
             </article>
+
+            <CTASection />
         </main>
     );
 }
